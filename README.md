@@ -1,5 +1,17 @@
 # Empyrion Voting Reward Mod
 
+**Ceci est un fork de [GitHub-TC/EmpyrionVotingRewardMod](https://github.com/GitHub-TC/EmpyrionVotingRewardMod).**
+
+Droits d’auteur originaux © GitHub-TC et contributeurs  
+Modifications © 2025 [El Dran/ Eldran64]
+
+Ce projet est distribué sous licence [GNU GPL v3.0](LICENSE).
+
+**Changelog du fork :**
+- Ajout du support multilingue (FR/EN)
+
+Voir [LICENSE](LICENSE) pour les détails.
+
 ## Installation
 Sie können diesen Mod direkt mit dem MOD-Manager von EWA (Empyrion Web Access) laden. <br/>
 Ohne den EWA funktioniert der Mod (vermutlich) nur innerhalb des EmpyrionModHost
