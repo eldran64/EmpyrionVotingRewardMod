@@ -3,7 +3,7 @@
 **Ceci est un fork de [GitHub-TC/EmpyrionVotingRewardMod](https://github.com/GitHub-TC/EmpyrionVotingRewardMod).**
 
 Droits d’auteur originaux © GitHub-TC et contributeurs  
-Modifications © 2024 [Ton Nom ou Pseudo]
+Modifications © 2025 [El Dran/ Eldran64]
 
 Ce projet est distribué sous licence [GNU GPL v3.0](LICENSE).
 
