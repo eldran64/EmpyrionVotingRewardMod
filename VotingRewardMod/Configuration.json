@@ -1,0 +1,247 @@
+{
+  "LogLevel": "Message",
+  "CommandPrefix": "/\\",
+  "VotingApiServerKey": "NxCh4k1MeKqjpalus2grg7KiZBacN5PKx2t",
+  "Cumulative": true,
+  "RewardTestPlayerName": "",
+  "ServerVotingHomepage": "https://empyrion-servers.com/server/58047/",
+  "GetUnclaimedVoteUrl": "https://empyrion-servers.com/api/?object=votes&element=claim&key={0}&steamid={1}",
+  "GetUnclaimedVoteMatch": "1",
+  "ClaimedVoteUrl": "https://empyrion-servers.com/api/?action=post&object=votes&element=claim&key={0}&steamid={1}",
+  "ClaimedVoteMethod": "POST",
+  "NameIdMappingFile": "filepath to the NameIdMapping.json e.g. from EmpyrionScripting for cross savegame support",
+  "StatsRewards": [
+    {
+      "Type": "Health",
+      "AddCount": 50,
+      "MaxCount": 1000
+    }
+  ],
+  "VotingRewards": [
+    {
+      "ForVoteNumerXGet": 0,
+      "EveryXVotesGet": 1,
+      "Rewards": [
+        {
+          "Id": 4342,
+          "Name": null,
+          "Description": "Pentaxide raffiné",
+          "Count": 100
+        },
+        {
+          "Id": 4421,
+          "Name": null,
+          "Description": "Hydrocellule de promethium",
+          "Count": 100
+        },
+        {
+          "Id": 4463,
+          "Name": null,
+          "Description": "Pizza",
+          "Count": 5
+        },
+        {
+          "Id": 7301,
+          "Name": null,
+          "Description": "Lingot Magmacite",
+          "Count": 1
+        }
+      ]
+    },
+    {
+      "ForVoteNumerXGet": 0,
+      "EveryXVotesGet": 100,
+      "Rewards": [
+        {
+          "Id": 7341,
+          "Name": null,
+          "Description": "Noyau d'essaim de drone intact",
+          "Count": 1
+        }
+      ]
+    }
+  ],
+  "VotingLottery": [
+    {
+      "Id": 4429,
+      "Name": null,
+      "Description": "Rotten Food",
+      "Count": 100
+    },
+    {
+      "Id": 4429,
+      "Name": null,
+      "Description": "Rotten Food",
+      "Count": 100
+    },
+    {
+      "Id": 4429,
+      "Name": null,
+      "Description": "Rotten Food",
+      "Count": 100
+    },
+    {
+      "Id": 4346,
+      "Name": null,
+      "Description": "Gold Ingot",
+      "Count": 100
+    },
+    {
+      "Id": 4136,
+      "Name": null,
+      "Description": "Epic Drill",
+      "Count": 1
+    },
+    {
+      "Id": 1110,
+      "Name": null,
+      "Description": "T3 AutoMiner",
+      "Count": 1
+    }
+  ],
+  "PlayerVotes": [
+    {
+      "SteamId": "76561198033476184",
+      "PlayerName": "Aligator 427",
+      "Statistic": {
+        "StartAtUtc": "2025-04-04T17:09:09.29013Z",
+        "VoteForReward": 55,
+        "VoteForLottery": 0,
+        "VoteForHealth": 0,
+        "VoteForFood": 0,
+        "VoteForStamina": 0,
+        "VoteForOxygen": 0
+      }
+    },
+    {
+      "SteamId": "76561198380402051",
+      "PlayerName": "Big Barbar",
+      "Statistic": {
+        "StartAtUtc": "2025-04-04T19:56:47.2575123Z",
+        "VoteForReward": 3,
+        "VoteForLottery": 0,
+        "VoteForHealth": 0,
+        "VoteForFood": 0,
+        "VoteForStamina": 0,
+        "VoteForOxygen": 0
+      }
+    },
+    {
+      "SteamId": "76561198085199453",
+      "PlayerName": "GrisNuage",
+      "Statistic": {
+        "StartAtUtc": "2025-04-04T23:06:40.104984Z",
+        "VoteForReward": 69,
+        "VoteForLottery": 0,
+        "VoteForHealth": 0,
+        "VoteForFood": 0,
+        "VoteForStamina": 0,
+        "VoteForOxygen": 0
+      }
+    },
+    {
+      "SteamId": "76561197995708305",
+      "PlayerName": "Faust",
+      "Statistic": {
+        "StartAtUtc": "2025-04-06T14:18:52.1004617Z",
+        "VoteForReward": 6,
+        "VoteForLottery": 0,
+        "VoteForHealth": 0,
+        "VoteForFood": 0,
+        "VoteForStamina": 0,
+        "VoteForOxygen": 0
+      }
+    },
+    {
+      "SteamId": "76561198044351057",
+      "PlayerName": "Faradel",
+      "Statistic": {
+        "StartAtUtc": "2025-04-06T14:19:24.2679649Z",
+        "VoteForReward": 15,
+        "VoteForLottery": 0,
+        "VoteForHealth": 10,
+        "VoteForFood": 0,
+        "VoteForStamina": 0,
+        "VoteForOxygen": 0
+      }
+    },
+    {
+      "SteamId": "76561197986374086",
+      "PlayerName": "Bibikill",
+      "Statistic": {
+        "StartAtUtc": "2025-04-13T13:13:26.3492592Z",
+        "VoteForReward": 1,
+        "VoteForLottery": 0,
+        "VoteForHealth": 0,
+        "VoteForFood": 0,
+        "VoteForStamina": 0,
+        "VoteForOxygen": 0
+      }
+    },
+    {
+      "SteamId": "76561199137808142",
+      "PlayerName": "loupineto",
+      "Statistic": {
+        "StartAtUtc": "2025-04-23T19:42:09.0272322Z",
+        "VoteForReward": 0,
+        "VoteForLottery": 0,
+        "VoteForHealth": 2,
+        "VoteForFood": 0,
+        "VoteForStamina": 0,
+        "VoteForOxygen": 0
+      }
+    },
+    {
+      "SteamId": "76561198175304005",
+      "PlayerName": "angurwa",
+      "Statistic": {
+        "StartAtUtc": "2025-04-25T05:58:13.2432568Z",
+        "VoteForReward": 55,
+        "VoteForLottery": 1,
+        "VoteForHealth": 0,
+        "VoteForFood": 0,
+        "VoteForStamina": 0,
+        "VoteForOxygen": 0
+      }
+    },
+    {
+      "SteamId": "76561198271948706",
+      "PlayerName": "Nad_Blueeyes",
+      "Statistic": {
+        "StartAtUtc": "2025-04-25T06:30:54.0451987Z",
+        "VoteForReward": 53,
+        "VoteForLottery": 0,
+        "VoteForHealth": 0,
+        "VoteForFood": 0,
+        "VoteForStamina": 0,
+        "VoteForOxygen": 0
+      }
+    },
+    {
+      "SteamId": "76561198015771346",
+      "PlayerName": "Dracuss",
+      "Statistic": {
+        "StartAtUtc": "2025-04-25T19:18:38.2626529Z",
+        "VoteForReward": 50,
+        "VoteForLottery": 0,
+        "VoteForHealth": 0,
+        "VoteForFood": 0,
+        "VoteForStamina": 0,
+        "VoteForOxygen": 0
+      }
+    },
+    {
+      "SteamId": "76561198049403259",
+      "PlayerName": "RockyHorror",
+      "Statistic": {
+        "StartAtUtc": "2025-07-15T06:35:40.4869492Z",
+        "VoteForReward": 1,
+        "VoteForLottery": 0,
+        "VoteForHealth": 0,
+        "VoteForFood": 0,
+        "VoteForStamina": 0,
+        "VoteForOxygen": 0
+      }
+    }
+  ]
+}

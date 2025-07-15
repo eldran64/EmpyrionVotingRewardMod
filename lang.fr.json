@@ -1,0 +1,17 @@
+{
+  "SinceVotes": "Depuis le {0}, vous avez obtenu les votes suivants :",
+  "rewards": "récompenses",
+  "lottery": "loterie",
+  "StatHealthMax": "santé maximale",
+  "StatFoodMax": "nourriture maximale",
+  "StatOxygenMax": "oxygène maximal",
+  "StatStaminaMax": "endurance maximale",
+  "VoteRewardHelp": "Votez sur [c][cc0000]{0}[-][/c] pour le serveur.",
+  "RewardSectionTitle": "Récompenses (/votereward) :",
+  "EveryXVotesGet": "tous les {0} votes, obtenez {1}",
+  "ForVoteNumberGet": "au {0}ème vote, obtenez {1}",
+  "LotteryHelp": "Loterie (/votelottery) :",
+  "NoWin": "{0} désolé, pas de gain",
+  "TimesChanceOn": "{0} fois la chance sur {1} {2}",
+  "RewardTestPlayer": "Joueur de test pour les récompenses : {0}"
+}

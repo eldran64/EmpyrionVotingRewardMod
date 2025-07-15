@@ -1,18 +1,4 @@
-﻿using Eleon.Modding;
-using EmpyrionNetAPIAccess;
-using EmpyrionNetAPITools;
-using EmpyrionNetAPIDefinitions;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using System;
-using System.Text.RegularExpressions;
-using System.Text;
-using NameIdMappingTools;
-
-namespace VotingRewardMod
+﻿namespace VotingRewardMod
 {
     public partial class VotingRewardMod : EmpyrionModBase
     {
@@ -92,29 +78,73 @@ namespace VotingRewardMod
             var player = await Request_Player_Info(chatInfo.playerId.ToId());
             var vote = GetPlayerVote(player);
 
-            var voteStats = new StringBuilder($"Since {vote.Statistic.StartAtUtc.ToLocalTime():dd.MM.yyyy} you have the following votes\n");
-            AddCount(voteStats, vote.Statistic.VoteForReward,  "rewards");
-            AddCount(voteStats, vote.Statistic.VoteForLottery, "lottery");
-            AddCount(voteStats, vote.Statistic.VoteForHealth,  "max health");
-            AddCount(voteStats, vote.Statistic.VoteForFood,    "max food");
-            AddCount(voteStats, vote.Statistic.VoteForOxygen,  "max oxygen");
-            AddCount(voteStats, vote.Statistic.VoteForStamina, "max stamina");
+            // 1. Statistiques de votes par type
+            var voteStats = new StringBuilder(Lang.T("SinceVotes", vote.Statistic.StartAtUtc.ToLocalTime().ToString("dd.MM.yyyy")) + "\n");
+            AddCount(voteStats, vote.Statistic.VoteForReward, Lang.T("rewards"));
+            AddCount(voteStats, vote.Statistic.VoteForLottery, Lang.T("lottery"));
+            AddCount(voteStats, vote.Statistic.VoteForHealth, Lang.T("StatHealthMax"));
+            AddCount(voteStats, vote.Statistic.VoteForFood, Lang.T("StatFoodMax"));
+            AddCount(voteStats, vote.Statistic.VoteForOxygen, Lang.T("StatOxygenMax"));
+            AddCount(voteStats, vote.Statistic.VoteForStamina, Lang.T("StatStaminaMax"));
 
-            await DisplayHelp(chatInfo.playerId, $"{voteStats}\nVote on [c][cc0000]{Configuration.Current.ServerVotingHomepage}[-][/c] for the server.\n\nRewards (/votereward):" +
-                Configuration.Current.VotingRewards.Where(V => V.EveryXVotesGet > 0).Aggregate("\n", (S, R) => {
-                    return S + $"every {R.EveryXVotesGet} vote{(R.EveryXVotesGet > 1 ? "s" : "")} get " + R.Rewards.Aggregate("", (s, r) => $"{r.Count} {r.Description}, {s}") + "\n";
-                }) +
-                Configuration.Current.VotingRewards.Where(V => V.ForVoteNumerXGet > 0).Aggregate("\n", (S, R) => {
-                    return S + $"for vote number {R.ForVoteNumerXGet} get " + R.Rewards.Aggregate("", (s, r) => $"{r.Count} {r.Description}, {s}") + "\n";
-                }) +
-                (Configuration.Current.VotingLottery?.Count == 0 ? "" :
-                "\nLottery (/votelottery):" +
-                Configuration.Current.VotingLottery.GroupBy(R => R.Id).Aggregate("\n", (S, R) => 
-                    R.Key == 0 
-                    ? $"{S}{Configuration.Current.VotingLottery.Count(r => r.Id == R.Key)} sorry no win\n"
-                    : $"{S}{Configuration.Current.VotingLottery.Count(r => r.Id == R.Key)} times the chance on {R.GroupBy(r => r.Count).Aggregate((string)null, (s, r) => $"{(s == null ? "" : s + ", ")}{r.Key}")} {R.First().Description}\n"
-                )) + 
-                (string.IsNullOrEmpty(Configuration.Current.RewardTestPlayerName) ? "" : $"\nRewardTestPlayer:{Configuration.Current.RewardTestPlayerName}"));
+            // 2. Liste des récompenses régulières
+            string rewardsByEveryXVotes = Configuration.Current.VotingRewards
+                .Where(V => V.EveryXVotesGet > 0)
+                .Aggregate("", (acc, reward) =>
+                {
+                    string rewardList = reward.Rewards.Aggregate("", (s, r) => $"{r.Count} {r.Description}, {s}");
+                    return acc + Lang.T("EveryXVotesGet", reward.EveryXVotesGet, rewardList).TrimEnd(',', ' ') + "\n";
+                });
+
+            string rewardsByVoteNumber = Configuration.Current.VotingRewards
+                .Where(V => V.ForVoteNumerXGet > 0)
+                .Aggregate("", (acc, reward) =>
+                {
+                    string rewardList = reward.Rewards.Aggregate("", (s, r) => $"{r.Count} {r.Description}, {s}");
+                    return acc + Lang.T("ForVoteNumberGet", reward.ForVoteNumerXGet, rewardList).TrimEnd(',', ' ') + "\n";
+                });
+
+            // 3. Loterie
+            string lotterySection = "";
+            if (Configuration.Current.VotingLottery != null && Configuration.Current.VotingLottery.Count > 0)
+            {
+                lotterySection += "\n" + Lang.T("LotteryHelp");
+                lotterySection += Configuration.Current.VotingLottery
+                    .GroupBy(r => r.Id)
+                    .Aggregate("", (acc, group) =>
+                    {
+                        if (group.Key == 0)
+                        {
+                            return acc + Lang.T("NoWin", group.Count()) + "\n";
+                        }
+                        else
+                        {
+                            string chanceLabels = group
+                                .GroupBy(r => r.Count)
+                                .Aggregate("", (s, g) => $"{(s == "" ? "" : s + ", ")}{g.Key}");
+                            return acc + Lang.T("TimesChanceOn", group.Count(), chanceLabels, group.First().Description) + "\n";
+                        }
+                    });
+            }
+
+            // 4. Test player info (optionnel)
+            string rewardTestPlayer = "";
+            if (!string.IsNullOrEmpty(Configuration.Current.RewardTestPlayerName))
+            {
+                rewardTestPlayer = "\n" + Lang.T("RewardTestPlayer", Configuration.Current.RewardTestPlayerName);
+            }
+
+            // 5. Construction finale du message d'aide
+            string helpMessage =
+                voteStats +
+                "\n" + Lang.T("VoteRewardHelp", Configuration.Current.ServerVotingHomepage) +
+                "\n\n" + Lang.T("RewardSectionTitle") +
+                rewardsByEveryXVotes +
+                rewardsByVoteNumber +
+                lotterySection +
+                rewardTestPlayer;
+
+            await DisplayHelp(chatInfo.playerId, helpMessage);
         }
 
         private void AddCount(StringBuilder voteStats, int voteCount, string name)
@@ -356,6 +386,7 @@ namespace VotingRewardMod
             };
 
             Configuration.Load();
+            Lang.Load(Configuration.Current.Language ?? "en");
 
             if (Configuration.LoadException == null) Configuration.Save();
         }
