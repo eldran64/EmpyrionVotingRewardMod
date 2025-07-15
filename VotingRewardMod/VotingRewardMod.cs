@@ -1,4 +1,18 @@
-﻿namespace VotingRewardMod
+﻿using Eleon.Modding;
+using EmpyrionNetAPIAccess;
+using EmpyrionNetAPITools;
+using EmpyrionNetAPIDefinitions;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using System;
+using System.Text.RegularExpressions;
+using System.Text;
+using NameIdMappingTools;
+
+namespace VotingRewardMod
 {
     public partial class VotingRewardMod : EmpyrionModBase
     {

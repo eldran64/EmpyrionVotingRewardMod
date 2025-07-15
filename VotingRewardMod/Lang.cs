@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace VotingRewardMod
 {
@@ -13,9 +15,8 @@ namespace VotingRewardMod
 
         public static void Load(string lang = "en")
         {
-            string filename = Path.Combine(EmpyrionConfiguration.SaveGameModPath, $"lang.{lang}.json");
-            if (!File.Exists(filename) && lang != "en")
-                filename = Path.Combine(EmpyrionConfiguration.SaveGameModPath, "lang.en.json");
+            string filename = Path.Combine("lang", $"lang.{lang}.json");
+            
             if (File.Exists(filename))
                 _texts = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText(filename));
             else
