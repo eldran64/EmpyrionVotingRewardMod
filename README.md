@@ -13,52 +13,6 @@ Ce projet est distribué sous licence [GNU GPL v3.0](LICENSE).
 Voir [LICENSE](LICENSE) pour les détails.
 
 ## Installation
-Sie können diesen Mod direkt mit dem MOD-Manager von EWA (Empyrion Web Access) laden. <br/>
-Ohne den EWA funktioniert der Mod (vermutlich) nur innerhalb des EmpyrionModHost
-
-## Konfigurieren Sie Ihre Belohnungen
-Nach der Installation und dem Start des Mods gibt es hier eine Beispielkonfiguration, die angepasst werden kann.
-[SaveGamePath]\\Mods\\VotingReward\\Configuration.json
-
-Hier muss auch der API-Schlüssel für den Zugriff auf https://empyrion-servers.com hinterlegt werden
-
-## Verwendungszweck
-Nach einer Abstimmung auf der Seite https://empyrion-servers.com kann der Spieler seine Belohnung mit der Teilabstimmung anfordern
-* "\\votereward" gibt dir eine Belohnung
-* "\\votelottery" spielt in der Lotterie mit Ihrer Stimme
-* "\\voteforstat health" erhöht deine Gesundheitsmaximum mit deiner Stimme
-* "\\voteforstat stamina" erhöht deine Ausdauermaximum mit deiner Stimme
-* "\\voteforstat food" erhöht dein Essensmaximum mit deiner Stimme
-* "\\voteforstat oxygen" erhöht dein Sauerstoffmaximum mit deiner Stimme
-
-Mit dem Befehl "\\vote help" kann der Spieler die möglichen Belohnungen und die Anzahl seiner Stimmen abrufen.
-
-Konfigurationsparameter:
-```
-{0} = VotingApiServerKey
-{1} = Player SteamID
-{2} = Player Name
-```
-
-Konfiguration für top-games.net (PlayerName):
-```
-"ServerVotingHomepage": "https://top-games.net",
-"GetUnclaimedVoteUrl" : "https://api.top-games.net/v1/votes/claim-username?server_token={0}&playername={2}",
-"GetUnclaimedVoteMatch": ".*\"claimed\"\\s*:\\s*1\\s*,.*",
-"ClaimedVoteUrl": "",
-```
-
-Konfiguration für top-games.net (SteamId) (scheint nicht zu funktionieren):
-```
-"ServerVotingHomepage": "https://top-games.net",
-"GetUnclaimedVoteUrl" : "https://api.top-games.net/v1/votes/claim-steam?server_token={0}&steam_id={1}",
-"GetUnclaimedVoteMatch": ".*\"claimed\"\\s*:\\s*1\\s*,.*",
-"ClaimedVoteUrl": "",
-```
-
-# Empyrion Voting Reward Mod
-
-## Installation
 Your can direct load this mod with the EWA (Empyrion Web Access) MOD manager.<br/>
 Without the EWA the mod works only within the EmpyrionModHost
 
